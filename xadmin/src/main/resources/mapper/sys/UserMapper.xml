@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yql.sys.mapper.UserMapper">
+    <select id="getRole" resultType="String">
+        select r.role_name
+        from x_user_role u left join x_role r
+        on u.role_id=r.role_id and user_id=#{id}
+    </select>
+
+</mapper>

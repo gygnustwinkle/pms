@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yql.sys.mapper.MenuMapper">
+
+    <select id="getMenuListByUserId" resultType="com.yql.sys.entity.Menu">
+        SELECT x_menu.*
+        FROM x_menu
+        WHERE menu_id in (
+            SELECT DISTINCT menu_id
+            FROM x_role_menu
+            WHERE role_id in (
+                SELECT role_id
+                FROM x_user_role
+                WHERE user_id = #{userId}
+                AND deleted = 0
+            )
+            AND deleted = 0
+        )
+        AND parent_id = #{pid}
+    </select>
+</mapper>

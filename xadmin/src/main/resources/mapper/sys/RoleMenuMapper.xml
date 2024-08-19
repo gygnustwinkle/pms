@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yql.sys.mapper.RoleMenuMapper">
+
+    <select id="getMenuIdListByRoleId" resultType="java.lang.Integer">
+        SELECT m.menu_id
+        FROM x_menu m,x_role r,x_role_menu x
+        WHERE m.menu_id = x.menu_id
+          AND r.role_id = x.role_id
+          AND x.role_id = #{id}
+          AND r.deleted = 0
+          AND x.deleted = 0
+    </select>
+</mapper>

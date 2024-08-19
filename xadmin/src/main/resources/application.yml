@@ -1,0 +1,21 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    username: root
+    password: mysql2022
+    url: jdbc:mysql:///xdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    port: 6379
+    host: localhost
+logging:
+  level:
+    com.yql: debug
+#逻辑删除配置
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
